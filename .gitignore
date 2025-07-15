@@ -1,5 +1,8 @@
 # IDE
 .idea/
 
-# Virtual environment
+# Python virtual environment
 .venv/
+
+# Python cache
+__pycache__/
