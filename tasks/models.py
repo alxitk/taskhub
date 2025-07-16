@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Position(models.Model):
@@ -10,6 +11,8 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
+    first_name = models.CharField(_("first name"), max_length=150, blank=False)
+    last_name = models.CharField(_("last name"), max_length=150, blank=False)
     position = models.ForeignKey(
         Position, on_delete=models.CASCADE, null=True, blank=True
     )
@@ -17,6 +20,7 @@ class Worker(AbstractUser):
     class Meta:
         verbose_name = "worker"
         verbose_name_plural = "workers"
+        ordering = ("username",)
 
 
 class TaskType(models.Model):
@@ -33,7 +37,7 @@ class Task(models.Model):
         MEDIUM = "medium", "Medium"
         HIGH = "high", "High"
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     deadline = models.DateTimeField()
     is_completed = models.BooleanField(default=False)
@@ -44,7 +48,7 @@ class Task(models.Model):
     assignees = models.ManyToManyField(Worker, related_name="tasks")
 
     class Meta:
-        ordering = ["deadline"]
+        ordering = ("deadline",)
 
     def __str__(self):
         return f"{self.name}: Deadline: {self.deadline}, Priority: {self.priority}"
