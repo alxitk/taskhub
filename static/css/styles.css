@@ -1,0 +1,46 @@
+.custom-header {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin: 20px;
+  padding: 15px 60px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
+}
+
+.circle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.circle-btn i {
+  font-size: 20px;
+}
+
+.circle-btn:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+.circle-btn.low {
+  background-color: #17a2b8;
+}
+
+.circle-btn.medium {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.circle-btn.high {
+  background-color: #dc3545;
+}
+
+.circle-btn.add {
+  background-color: #6c757d;
+}
