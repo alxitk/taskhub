@@ -37,6 +37,11 @@ class Task(models.Model):
         MEDIUM = "medium", "Medium"
         HIGH = "high", "High"
 
+    class Status(models.TextChoices):
+        TODO = "todo", "To Do"
+        IN_PROGRESS = "in_progress", "In Progress"
+        DONE = "done", "Done"
+
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     deadline = models.DateTimeField()
@@ -46,6 +51,9 @@ class Task(models.Model):
     )
     task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
     assignees = models.ManyToManyField(Worker, related_name="tasks")
+    status = models.CharField(
+        max_length=20, choices=Status.choices, default=Status.TODO
+    )
 
     class Meta:
         ordering = ("deadline",)
