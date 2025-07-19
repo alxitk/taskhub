@@ -40,6 +40,7 @@ class Task(models.Model):
     class Status(models.TextChoices):
         TODO = "todo", "To Do"
         IN_PROGRESS = "in_progress", "In Progress"
+        NEEDS_REVIEW = "needs_review", "Needs Review"
         DONE = "done", "Done"
 
     name = models.CharField(max_length=100, unique=True)
