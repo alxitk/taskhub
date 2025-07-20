@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
-from tasks.forms import TaskSearchForm
+from tasks.forms import TaskSearchForm, TaskForm
 from tasks.models import Worker, Task
 
 
@@ -22,7 +23,6 @@ def index(request):
     }
 
     return render(request, "tasks/index.html", context=context)
-
 
 class TasksListView(generic.ListView):
     model = Task
@@ -50,6 +50,11 @@ class TasksListView(generic.ListView):
         context["search_form"] = TaskSearchForm(initial={"name": name})
         return context
 
-
 class TaskDetailView(generic.DetailView):
     model = Task
+
+
+class TaskCreateView(generic.CreateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("tasks:tasks-list")
