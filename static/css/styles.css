@@ -32,22 +32,21 @@ h1 {
   font-size: 30px;
 }
 
-.app {
+.app,
+.project {
   width: 100%;
   min-height: 100vh;
 }
 
 .project {
   padding: 2rem;
-  max-width: 100%;
-  width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 .project-info {
   padding: 2rem 0;
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -85,7 +84,6 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  width: 100%;
   margin-bottom: 2rem;
 }
 
@@ -93,11 +91,10 @@ h1 {
   background-color: var(--white);
   padding: 1rem;
   border-radius: 0.5rem;
-  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .project-column-heading {
@@ -164,10 +161,9 @@ h1 {
 }
 
 .task__tags {
-  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .task__options {
@@ -179,9 +175,8 @@ h1 {
 
 .task__stats {
   position: relative;
-  width: 100%;
-  color: var(--light-grey);
   font-size: 12px;
+  color: var(--light-grey);
 }
 
 .task__stats span:not(:last-of-type) {
@@ -197,27 +192,31 @@ h1 {
   height: 25px;
   border-radius: 100rem;
   position: absolute;
-  display: inline-block;
   right: 0;
   bottom: 0;
 }
 
-.task__owner.low { background: #17a2b8; }
-.task__owner.medium { background: #ffc107; }
-.task__owner.high { background: #dc3545; }
+.task__owner.low {
+  background: #17a2b8;
+}
+.task__owner.medium {
+  background: #ffc107;
+}
+.task__owner.high {
+  background: #dc3545;
+}
 
 .task-hover {
   border: 3px dashed var(--light-grey) !important;
 }
 
-
 .task-details {
   width: 24%;
   border-left: 1px solid #d9e0e9;
   display: inline-block;
-  height: 100%;
   vertical-align: top;
   padding: 3rem 2rem;
+  height: 100%;
 }
 
 .tag-progress {
@@ -231,7 +230,6 @@ h1 {
 
 .tag-progress p {
   display: flex;
-  width: 100%;
   justify-content: space-between;
 }
 
@@ -241,7 +239,6 @@ h1 {
 
 .progress {
   width: 100%;
-  -webkit-appearance: none;
   appearance: none;
   border: none;
   border-radius: 10px;
@@ -256,7 +253,6 @@ h1 {
 .progress--copyright::-webkit-progress-bar {
   background-color: #ecd8e6;
 }
-
 .progress--copyright::-webkit-progress-value {
   background: #d459e8;
 }
@@ -264,7 +260,6 @@ h1 {
 .progress--illustration::-webkit-progress-bar {
   background-color: #dee7e3;
 }
-
 .progress--illustration::-webkit-progress-value {
   background-color: #46bd84;
 }
@@ -272,7 +267,6 @@ h1 {
 .progress--design::-webkit-progress-bar {
   background-color: #d8e7f4;
 }
-
 .progress--design::-webkit-progress-value {
   background-color: #08a0f7;
 }
@@ -285,25 +279,35 @@ h1 {
 .task-activity li {
   list-style: none;
   margin: 1rem 0;
-  padding: 0rem 1rem 1rem 3rem;
+  padding: 0 1rem 1rem 3rem;
   position: relative;
 }
 
-.task-activity time {
+time {
   display: block;
   color: var(--light-grey);
 }
 
-.task-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 100rem;
-  position: absolute;
-  top: 0;
-  left: 0;
+.task-icon,
+.circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.circle-btn:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+.circle-btn i {
+  font-size: 20px;
 }
 
 .task-icon svg {
@@ -314,15 +318,35 @@ h1 {
 .task-icon--attachment {
   background-color: #fba63c;
 }
-
 .task-icon--comment {
   background-color: #5dc983;
 }
-
 .task-icon--edit {
   background-color: #7784ee;
 }
 
+.circle-btn.low {
+  background-color: #17a2b8;
+}
+.circle-btn.medium {
+  background-color: #ffc107;
+  color: #000;
+}
+.circle-btn.high {
+  background-color: #dc3545;
+}
+.circle-btn.add {
+  background-color: #6c757d;
+}
+
+.custom-header {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin: 20px;
+  padding: 15px 60px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
+}
 
 @media only screen and (max-width: 1300px) {
   .project {
