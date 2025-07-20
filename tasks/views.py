@@ -49,3 +49,7 @@ class TasksListView(generic.ListView):
         name = self.request.GET.get("name", "")
         context["search_form"] = TaskSearchForm(initial={"name": name})
         return context
+
+
+class TaskDetailView(generic.DetailView):
+    model = Task
