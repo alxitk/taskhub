@@ -32,9 +32,21 @@
           {% block content %}{% endblock %}
         </main>
         <aside class="col-12 col-xl-3">
-          {% block sidebar %}sidebar{% endblock %}
+          {% block sidebar %}
+            {% include "includes/clocks.html" %}
+          {% endblock %}
         </aside>
       </div>
     </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      document.getElementById('clock').textContent = time;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
