@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
+  <div class="login-form p-4 p-md-5 rounded shadow bg-white" style="max-width: 400px; width: 100%;">
+
+    {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        Your username and password didn't match. Please try again.
+      </div>
+    {% endif %}
+
+    <h2 class="text-center mb-4">Login</h2>
+
+    {% if next %}
+      <p class="text-center text-muted mb-3">Please log in to see this page.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+    <div class="d-flex justify-content-center mt-4">
+      <button type="submit" class="reg-btn">Login</button>
+    </div>
+
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+</div>
+{% endblock %}

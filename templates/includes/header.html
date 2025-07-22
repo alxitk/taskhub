@@ -5,18 +5,37 @@
     <div class="navbar-brand font-weight-bold">TaskHub</div>
 
     <!-- Buttons -->
-    <div class="d-flex align-items-center">
+    <ul class="d-flex align-items-center">
       <!-- Low -->
-      <a href="#" class="circle-btn low mx-2" title="Low Priority"></a>
+      <li>
+        <a href="#" class="circle-btn low mx-2" title="Low Priority"></a>
+      </li>
       <!-- Medium -->
-      <a href="#" class="circle-btn medium mx-2" title="Medium Priority"></a>
+      <li>
+        <a href="#" class="circle-btn medium mx-2" title="Medium Priority"></a>
+      </li>
       <!-- High -->
-      <a href="#" class="circle-btn high mx-2" title="High Priority"></a>
+      <li>
+        <a href="#" class="circle-btn high mx-2" title="High Priority"></a>
+      </li>
       <!-- Add -->
-      <a href="#" class="circle-btn add mx-2" title="Add Task">
-        <i class='bx bx-plus'></i>
-      </a>
-    </div>
-
+      <li>
+        <a href="#" class="circle-btn add mx-2" title="Add Task"><i class='bx bx-plus'></i></a>
+      </li>
+      <!-- Login/Logout -->
+     {% if user.is_authenticated %}
+      <li class="reg-btn">{{ user.get_username }}</li>
+      <li class="">
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="reg-btn">Logout</button>
+        </form>
+      </li>
+     {% else %}
+      <li class="">
+        <a href="{% url 'login' %}?next={{ request.path }}" class="reg-btn">Login</a>
+      </li>
+      {% endif %}
+    </ul>
   </div>
 </header>

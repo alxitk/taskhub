@@ -393,3 +393,56 @@ time {
     font-size: 25px;
   }
 }
+
+.login-btn {
+  position: relative;
+  background-image: linear-gradient(180deg, #fe675c, #fd267d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 3rem;
+  max-height: 42px;
+  color: white;
+  text-decoration: none;
+  border-radius: 100px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .7s cubic-bezier(.54, .1, 0, .99);
+  border: 2px solid rgba(255, 255, 255, .4);
+}
+
+.login-btn:active {
+  letter-spacing: 0px;
+  transform: translateY(15px);
+}
+li{
+  list-style: none;
+}
+.reg-btn {
+  background-image: linear-gradient(180deg, #fe675c, #fd267d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3.5rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 100px;
+  max-height: 42px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.7s cubic-bezier(.54, .1, 0, .99);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+.reg-btn:hover {
+  letter-spacing: 8px;
+}
+
+.reg-btn:active {
+  letter-spacing: 0px;
+  transform: translateY(15px);
+}
+
