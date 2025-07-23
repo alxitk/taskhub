@@ -22,11 +22,11 @@ class TaskForm(forms.ModelForm):
             attrs={
                 "type": "datetime-local",
                 "class": "form-control",
-                "style": "width: 300px;"
+                "style": "width: 300px;",
             }
         ),
-
     )
+
     class Meta:
         model = Task
         fields = "__all__"

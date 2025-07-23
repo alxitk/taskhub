@@ -24,6 +24,7 @@ def index(request):
 
     return render(request, "tasks/index.html", context=context)
 
+
 class TasksListView(generic.ListView):
     model = Task
     context_object_name = "task_list"
@@ -50,6 +51,7 @@ class TasksListView(generic.ListView):
         context["search_form"] = TaskSearchForm(initial={"name": name})
         return context
 
+
 class TaskDetailView(generic.DetailView):
     model = Task
 
@@ -57,4 +59,15 @@ class TaskDetailView(generic.DetailView):
 class TaskCreateView(generic.CreateView):
     model = Task
     form_class = TaskForm
+    success_url = reverse_lazy("tasks:tasks-list")
+
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("tasks:tasks-list")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = Task
     success_url = reverse_lazy("tasks:tasks-list")
