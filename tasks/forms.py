@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-from tasks.models import Task
+
+from tasks.models import Task, Worker
 
 
 class TaskSearchForm(forms.Form):
@@ -38,3 +40,13 @@ class WorkerSearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={"placeholder": "Search by username"}),
     )
+
+
+class WorkerCreateForm(UserCreationForm):
+    class Meta:
+        model = Worker
+        fields = UserCreationForm.Meta.fields + (
+            "first_name",
+            "last_name",
+            "position",
+        )
