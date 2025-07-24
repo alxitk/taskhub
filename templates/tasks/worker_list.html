@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>
-      WWorkers List
+      Workers List
       <a href="" class="btn btn-primary link-to-page">
         Create
       </a>
@@ -16,7 +16,7 @@
         <th>Username</th>
         <th>First name</th>
         <th>Last name</th>
-        <th>License number</th>
+        <th>Position</th>
       </tr>
     {% for worker in worker_list %}
       <tr>
@@ -30,7 +30,7 @@
 
     </table>
     {% else %}
-      <p>There are no workers in the service.</p>
+      <p>There are no workers in the hub.</p>
     {% endif %}
 {% endblock %}
 

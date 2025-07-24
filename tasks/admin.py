@@ -31,9 +31,7 @@ class WorkerAdmin(UserAdmin):
         "first_name",
         "last_name",
     )
-    fieldsets = UserAdmin.fieldsets + (
-        (("Position", {"fields": ("position",)}),)
-    )
+    fieldsets = UserAdmin.fieldsets + ((("Position", {"fields": ("position",)}),))
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
             (
