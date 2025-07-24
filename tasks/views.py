@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from tasks.forms import TaskSearchForm, TaskForm
+from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm
 from tasks.models import Worker, Task
 
 
@@ -71,3 +71,31 @@ class TaskUpdateView(generic.UpdateView):
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("tasks:tasks-list")
+
+
+class WorkerListView(generic.ListView):
+    model = Worker
+    context_object_name = "worker_list"
+    template_name = "tasks/worker_list.html"
+    # queryset = Worker.objects.all()
+
+    def get_queryset(self):
+        queryset = Worker.objects.all()
+        username = self.request.GET.get("username", "")
+        if username:
+            return queryset.filter(username__icontains=username)
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # filtered_queryset = self.get_queryset()
+
+        # context["todo_tasks"] = filtered_queryset.filter(status="todo")
+        # context["in_progress_tasks"] = filtered_queryset.filter(status="in_progress")
+        # context["done_tasks"] = filtered_queryset.filter(status="done")
+        # context["needs_review_tasks"] = filtered_queryset.filter(status="needs_review")
+
+        username = self.request.GET.get("username", "")
+        context["search_form"] = WorkerSearchForm(initial={"username": username})
+        return context

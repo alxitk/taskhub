@@ -30,3 +30,11 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = "__all__"
+
+
+class WorkerSearchForm(forms.Form):
+    username = forms.CharField(
+        label="",
+        required=False,
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"}),
+    )
