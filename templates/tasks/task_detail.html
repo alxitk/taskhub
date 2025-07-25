@@ -26,7 +26,11 @@
     <h5>Assignees</h5>
     <ul class="pl-3">
       {% for assignee in task.assignees.all %}
-        <li>{{ assignee.username }} ({{ assignee.first_name }} {{ assignee.last_name }})</li>
+        <li>
+          <a href="{% url 'tasks:worker-detail' assignee.id %}">
+            {{ assignee.username }} ({{ assignee.first_name }} {{ assignee.last_name }})
+          </a>
+        </li>
       {% empty %}
         <li>No assignees</li>
       {% endfor %}
