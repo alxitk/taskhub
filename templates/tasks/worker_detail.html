@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ worker.username }}
+    <a href="" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ worker.first_name }}</p>
+  <p><strong>Last name:</strong> {{ worker.last_name }}</p>
+  <p><strong>Position:</strong> {{ worker.position }}</p>
+  <p><strong>Is staff:</strong> {{ worker.is_staff }}</p>
+
+{#  <div class="ml-3">#}
+{#    <h4>Tasks</h4>#}
+{#    Добавить поле task для работника #}
+{#    {% for task in worker.tasks.all %}#}
+{#        <hr>#}
+{#        <p><strong>Name:</strong> {{ task.name }}</p>#}
+{#        <p><strong>Deadline:</strong> {{ task.deadline }}</p>#}
+{#        <p><strong>Priority:</strong> {{ task.priority }}</p>#}
+{#        <p><strong>Status:</strong> {{ task.status }}</p>#}
+{#        <p><strong>Task type:</strong> {{ task.task_type }}</p>#}
+{#        Добавить список людей работающих над этой же задачей#}
+{#        <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>#}
+{##}
+{#    {% empty %}#}
+{#      <p>No tasks!</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{% endblock %}

@@ -100,3 +100,9 @@ class WorkerCreateView(generic.CreateView):
     success_url = reverse_lazy("tasks:worker-list")
 
 
+class WorkerDetailView(generic.DetailView):
+    model = Worker
+    queryset = Worker.objects.all().prefetch_related("tasks__assignees")
+
+
+
