@@ -101,8 +101,18 @@ class WorkerCreateView(generic.CreateView):
 
 
 class WorkerDetailView(generic.DetailView):
-    model = Worker
     queryset = Worker.objects.all().prefetch_related("tasks__assignees")
+
+
+class WorkerUpdateView(generic.UpdateView):
+    model = Worker
+    fields = ("username", "first_name", "last_name" ,"position",)
+    success_url = reverse_lazy("tasks:worker-list")
+
+
+class WorkerDeleteView(generic.DeleteView):
+    model = Worker
+    success_url = reverse_lazy("tasks:worker-list")
 
 
 
