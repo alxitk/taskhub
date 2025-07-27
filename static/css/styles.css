@@ -322,25 +322,39 @@ li{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 3.5rem;
+  padding: 1.5rem 2.5rem;
   color: white;
   text-decoration: none;
   border-radius: 100px;
   max-height: 42px;
   font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   transition: all 0.7s cubic-bezier(.54, .1, 0, .99);
   border: 2px solid rgba(255, 255, 255, 0.4);
   text-align: center;
 }
 
 .reg-btn:hover {
-  letter-spacing: 8px;
+  letter-spacing: 2px;
 }
 
 .reg-btn:active {
-  letter-spacing: 0px;
-  transform: translateY(15px);
+  letter-spacing: 2px;
+  transform: translateY(5px);
 }
 
+.reg-btn,
+.reg-btn:hover,
+.reg-btn:visited,
+.reg-btn:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.search-input {
+  max-height: 42px;
+  width: 100%;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fe675c;
+  outline: none;
+}
