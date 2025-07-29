@@ -7,8 +7,6 @@
     <p>{{ task.name}}</p>
     <div class='task__stats'>
       <span><time datetime="2021-11-24T20:00:00"><i class="fas fa-flag"></i> {{ task.deadline|date:"M d" }}</time></span>
-{#      <span><i class="fas fa-comment"></i>3</span>#}
-{#      <span><i class="fas fa-paperclip"></i>7</span>#}
       <span><i class="fas fa-user"></i>  {{ task.assignees.count }}</span>
       <span class="task__owner
         {% if task.priority == 'low' %} low
