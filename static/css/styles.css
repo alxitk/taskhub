@@ -322,6 +322,25 @@ li{
   text-align: center;
 }
 
+.reg-btn-secondary {
+  position: relative;
+  background: #6c757d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  max-height: 42px;
+  color: white;
+  text-decoration: none;
+  border-radius: 100px;
+  font-size: 15px;
+  text-transform: lowercase;
+  letter-spacing: 1.5px;
+  transition: all 0.7s cubic-bezier(.54, .1, 0, .99);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
 .reg-btn:hover {
   letter-spacing: 2px;
 }
