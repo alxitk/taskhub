@@ -38,15 +38,22 @@
         </aside>
       </div>
     </div>
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const time = now.toLocaleTimeString('en-GB');
-      document.getElementById('clock').textContent = time;
-    }
+<script>
+  function updateClock() {
+    const now = new Date();
 
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
+    const time = now.toLocaleTimeString('en-GB');
+    const date = now.toLocaleDateString('en-GB', {
+      weekday: 'short',   // например: Tue
+      day: 'numeric',     // например: 29
+      month: 'short'      // например: Jul
+    });
+
+    document.getElementById('clock').textContent = `${time} | ${date}`;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
 </body>
 </html>

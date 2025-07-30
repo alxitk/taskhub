@@ -2,7 +2,9 @@
   <div class="d-flex justify-content-between w-100 align-items-center">
 
     <!-- Logo -->
-    <div class="navbar-brand font-weight-bold">TaskHub</div>
+    <div class="navbar-brand font-weight-bold">
+      <a href="{% url 'tasks:index' %}">TaskHub</a>
+    </div>
 
     <!-- Buttons -->
     <ul class="d-flex align-items-center">
@@ -24,7 +26,9 @@
       </li>
       <!-- Login/Logout -->
      {% if user.is_authenticated %}
-      <li class="reg-btn">{{ user.get_username }}</li>
+      <li class="reg-btn">
+        <a href="{% url 'tasks:worker-detail' user.id %}">{{ user.get_username }}</a>
+      </li>
       <li class="">
         <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}

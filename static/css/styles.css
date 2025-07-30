@@ -22,6 +22,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   color: var(--text);
   background-color: var(--bg);
@@ -112,14 +120,6 @@ h1 {
   color: var(--text);
 }
 
-.project-column-heading__options {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: var(--light-grey);
-  cursor: pointer;
-}
-
 .task {
   cursor: grab;
   background-color: var(--white);
@@ -129,6 +129,7 @@ h1 {
   box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
   border: 3px dashed transparent;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  margin: 5px 0;
 }
 
 .task-list {
@@ -139,7 +140,6 @@ h1 {
 
 .task:hover {
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-  border-color: rgba(162, 179, 207, 0.2);
 }
 
 .task p {
@@ -300,42 +300,23 @@ h1 {
   }
 }
 
-.login-btn {
-  position: relative;
-  background-image: linear-gradient(180deg, #fe675c, #fd267d);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 3rem;
-  max-height: 42px;
-  color: white;
-  text-decoration: none;
-  border-radius: 100px;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all .7s cubic-bezier(.54, .1, 0, .99);
-  border: 2px solid rgba(255, 255, 255, .4);
-}
-
-.login-btn:active {
-  letter-spacing: 0px;
-  transform: translateY(15px);
-}
 li{
   list-style: none;
 }
 .reg-btn {
+  position: relative;
   background-image: linear-gradient(180deg, #fe675c, #fd267d);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1.5rem 2.5rem;
+  max-height: 42px;
   color: white;
   text-decoration: none;
   border-radius: 100px;
-  max-height: 42px;
   font-size: 15px;
+  text-transform: lowercase;
+  letter-spacing: 1.5px;
   transition: all 0.7s cubic-bezier(.54, .1, 0, .99);
   border: 2px solid rgba(255, 255, 255, 0.4);
   text-align: center;
@@ -368,14 +349,14 @@ li{
 .sidebar-time {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 14px;
   min-height: 42px;
   padding: 6px 10px;
   background-color: #f8f9fa;
   border-radius: 50px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  width: fit-content;
-  margin-top: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .sidebar-time i {
