@@ -11,7 +11,7 @@ from tasks.views import (
     WorkerCreateView,
     WorkerDetailView,
     WorkerUpdateView,
-    WorkerDeleteView,
+    WorkerDeleteView, toggle_assign_to_task,
 )
 
 app_name = "tasks"
@@ -31,4 +31,9 @@ urlpatterns = [
     path("worker/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     path("worker/<int:pk>/update/", WorkerUpdateView.as_view(), name="worker-update"),
     path("worker/<int:pk>/delete/", WorkerDeleteView.as_view(), name="worker-delete"),
+    path(
+            "tasks/<int:pk>/toggle-assign/",
+            toggle_assign_to_task,
+            name="toggle-task-assign",
+        ),
 ]
