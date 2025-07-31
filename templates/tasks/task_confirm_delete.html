@@ -20,7 +20,7 @@
       <button type="submit" class="reg-btn w-100">
         <i class="bx bx-check"></i> Yes, delete
       </button>
-      <a href="javascript:history.back()" class="reg-btn-secondary w-100">
+      <a href="{% url 'tasks:task-detail' task.id %}" class="reg-btn-secondary w-100">
         <i class="bx bx-x"></i> Cancel
       </a>
     </form>

@@ -11,7 +11,7 @@ from tasks.views import (
     WorkerCreateView,
     WorkerDetailView,
     WorkerUpdateView,
-    WorkerDeleteView, toggle_assign_to_task,
+    WorkerDeleteView, toggle_assign_to_task, set_task_status,
 )
 
 app_name = "tasks"
@@ -36,4 +36,5 @@ urlpatterns = [
             toggle_assign_to_task,
             name="toggle-task-assign",
         ),
+    path("task/<int:pk>/set-status/", set_task_status, name="set-status"),
 ]

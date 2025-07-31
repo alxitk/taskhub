@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -125,4 +125,14 @@ def toggle_assign_to_task(request, pk):
         task.assignees.add(user)
     return HttpResponseRedirect(reverse_lazy("tasks:task-detail", args=[pk]))
 
+
+def set_task_status(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    new_status = request.POST.get("status")
+
+    if new_status in Task.Status.values:
+        task.status = new_status
+        task.save()
+
+    return redirect("tasks:task-detail", pk=task.pk)
 
