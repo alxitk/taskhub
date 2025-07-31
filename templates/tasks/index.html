@@ -14,9 +14,9 @@
 
     {% if user.is_authenticated %}
       <a href="{% url 'tasks:tasks-list' %}" class="reg-btn">Go to Tasks</a>
+      <a href="{% url 'tasks:worker-list' %}" class="reg-btn">Go to Workers list</a>
     {% else %}
       <a href="{% url 'login' %}" class="reg-btn">Log In</a>
-{#    <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-lg">Register</a>#}
       <p class="mt-3 text-muted">You need to log in to view and manage your tasks.</p>
     {% endif %}
 
@@ -32,4 +32,9 @@
     </div>
   </div>
 </div>
+{% endblock %}
+{% block sidebar %}
+  <div class="mt-5">
+    {% include "includes/clocks.html" %}
+  </div>
 {% endblock %}
