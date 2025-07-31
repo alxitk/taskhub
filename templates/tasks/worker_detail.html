@@ -1,37 +1,72 @@
 {% extends "base.html" %}
 
+{% block title %}
+  <title>{{ worker.username }} | Worker Profile</title>
+{% endblock %}
+
 {% block content %}
-  <h1>
-    Username: {{ worker.username }}
-    <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
-
-    <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
-
-  <p><strong>First name:</strong> {{ worker.first_name }}</p>
-  <p><strong>Last name:</strong> {{ worker.last_name }}</p>
-  <p><strong>Position:</strong> {{ worker.position }}</p>
-  <p><strong>Is staff:</strong> {{ worker.is_staff }}</p>
-
-  <div class="ml-3">
-    <h4>Tasks</h4>
-
-    {% for task in worker.tasks.all %}
-        <hr>
-        <p><strong>Name:</strong> {{ task.name }}</p>
-        <p><strong>Deadline:</strong> {{ task.deadline }}</p>
-        <p><strong>Priority:</strong> {{ task.priority }}</p>
-        <p><strong>Status:</strong> {{ task.status }}</p>
-        <p><strong>Task type:</strong> {{ task.task_type }}</p>
-
-        <p class="text-muted"><strong>Id:</strong> {{task.id}}</p>
-
-    {% empty %}
-      <p>No tasks!</p>
-    {% endfor %}
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0 text-primary">👤 {{ worker.username }}</h1>
+    <div class="d-flex gap-2">
+      <a href="{% url 'tasks:worker-update' pk=worker.id %}" class="reg-btn bg-secondary text-white">
+        <i class="bx bx-edit-alt"></i> Update
+      </a>
+      <a href="{% url 'tasks:worker-delete' pk=worker.id %}" class="reg-btn bg-danger text-white">
+        <i class="bx bx-trash"></i> Delete
+      </a>
+    </div>
   </div>
+
+  <div class="card shadow-sm rounded-4 p-4 mb-4 bg-light">
+    <h5 class="mb-3 text-secondary">📄 Details</h5>
+    <p><strong>First name:</strong> {{ worker.first_name }}</p>
+    <p><strong>Last name:</strong> {{ worker.last_name }}</p>
+    <p><strong>Position:</strong> {{ worker.position|default:"—" }}</p>
+    <p><strong>Is staff:</strong> {% if worker.is_staff %}✅{% else %}❌{% endif %}</p>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow-sm rounded-4 p-4 mb-4 bg-warning-subtle h-100">
+        <h5 class="mb-3 text-warning">🚧 Incomplete Tasks</h5>
+          {% for task in worker.tasks.all %}
+            {% if task.status != "done" %}
+              <div class="mb-4 border-bottom pb-3">
+                <a href="{% url 'tasks:task-detail' task.id %}">
+                  <h6 class="text-primary">{{ task.name }}</h6>
+                </a>
+                <p class="mb-1"><strong>Deadline:</strong> {{ task.deadline }}</p>
+                <p class="mb-1"><strong>Priority:</strong> {{ task.priority }}</p>
+                <p class="mb-1"><strong>Status:</strong> {{ task.status }}</p>
+                <p class="text-muted"><strong>ID:</strong> {{ task.id }}</p>
+              </div>
+            {% endif %}
+          {% empty %}
+            <p class="text-muted">No incomplete tasks.</p>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm rounded-4 p-4 mb-4 bg-success-subtle h-100">
+        <h5 class="mb-3 text-success">✅ Completed Tasks</h5>
+          {% for task in worker.tasks.all %}
+            {% if task.status == "done" %}
+              <div class="mb-4 border-bottom pb-3">
+                <h6 class="text-primary">{{ task.name }}</h6>
+                <p class="mb-1"><strong>Deadline:</strong> {{ task.deadline }}</p>
+                <p class="mb-1"><strong>Priority:</strong> {{ task.priority }}</p>
+                <p class="mb-1"><strong>Status:</strong> {{ task.status }}</p>
+                <p class="text-muted"><strong>ID:</strong> {{ task.id }}</p>
+              </div>
+            {% endif %}
+          {% empty %}
+            <p class="text-muted">No completed tasks.</p>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

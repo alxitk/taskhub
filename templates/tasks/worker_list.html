@@ -1,37 +1,55 @@
 {% extends "base.html" %}
 
+{% block title %}
+  <title>Workers List | TaskHub</title>
+{% endblock %}
+
 {% block content %}
-    <h1>
-      Workers List
-      <a href="{% url 'tasks:worker-create' %}" class="btn btn-primary link-to-page">
-        Create
+  <div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="text-primary mb-0">👥 Workers List</h1>
+      <a href="{% url 'tasks:worker-create' %}" class="reg-btn">
+        <i class="bx bx-plus"></i> Create
       </a>
-    </h1>
+    </div>
 
     {% if worker_list %}
-
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Position</th>
-      </tr>
-    {% for worker in worker_list %}
-      <tr>
-        <td>{{ worker.id }}</td>
-        <td><a href="{% url 'tasks:worker-detail' pk=worker.id %}">{{ worker.username }} {% if user == worker %} (Me){% endif %}</a></td>
-        <td>{{ worker.first_name }}</td>
-        <td>{{ worker.last_name }}</td>
-        <td>{{ worker.position }}</td>
-      </tr>
-    {% endfor %}
-
-    </table>
+      <div class="table-wrapper my-4">
+        <table class="table styled-table">
+          <thead class="table-header-gradient">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for worker in worker_list %}
+              <tr>
+                <td>{{ worker.id }}</td>
+                <td>
+                  <a href="{% url 'tasks:worker-detail' pk=worker.id %}">
+                    {{ worker.username }} {% if user == worker %}(Me){% endif %}
+                  </a>
+                </td>
+                <td>{{ worker.first_name }}</td>
+                <td>{{ worker.last_name }}</td>
+                <td>{{ worker.position }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     {% else %}
-      <p>There are no workers in the hub.</p>
+      <div class="alert alert-warning mt-4">
+        There are no workers in the hub.
+      </div>
     {% endif %}
+
+  </div>
 {% endblock %}
 
 {% block sidebar %}
