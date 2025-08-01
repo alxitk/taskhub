@@ -5,7 +5,7 @@
 <div class="registration-form">
   <form method="post" novalidate>
     {% csrf_token %}
-    <h2 class="">Create task</h2>
+    <h2>{{ object|yesno:"Update,Create" }} Task</h2>
 
     {% for field in form %}
   <div class="form-group">
