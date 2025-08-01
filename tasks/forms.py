@@ -21,20 +21,31 @@ class TaskForm(forms.ModelForm):
     assignees = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
+        label="Select Assignees",
     )
     deadline = forms.DateTimeField(
         widget=forms.DateTimeInput(
             attrs={
                 "type": "datetime-local",
-                "class": "form-control",
-                "style": "width: 300px;",
+                "class": "form-control item",
+                "placeholder": "Deadline",
             }
         ),
     )
 
     class Meta:
         model = Task
-        fields = "__all__"
+        fields = ("name", "description", "deadline", "priority", "task_type", "assignees", "status")
+        labels = {
+            "status": "Select Task Status",
+        }
+        widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control item", "placeholder": "Task Name"}),
+            "description": forms.Textarea(attrs={"class": "form-control item", "placeholder": "Description"}),
+            "priority": forms.Select(attrs={"class": "form-control item"}),
+            "task_type": forms.Select(attrs={"class": "form-control item"}),
+            "status": forms.Select(attrs={"class": "form-control item"}),
+        }
 
 
 class WorkerSearchForm(forms.Form):
