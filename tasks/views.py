@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm
+from tasks.forms import TaskSearchForm, TaskForm, WorkerSearchForm, WorkerCreateForm, WorkerUpdateForm
 from tasks.models import Worker, Task
 
 
@@ -107,7 +107,7 @@ class WorkerDetailView(generic.DetailView):
 
 class WorkerUpdateView(generic.UpdateView):
     model = Worker
-    fields = ("username", "first_name", "last_name" ,"position",)
+    form_class = WorkerUpdateForm
     success_url = reverse_lazy("tasks:worker-list")
 
 

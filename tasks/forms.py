@@ -60,10 +60,41 @@ class WorkerSearchForm(forms.Form):
 
 
 class WorkerCreateForm(UserCreationForm):
+    password1 = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput(attrs={"class": "form-control item", "placeholder": "Password"})
+    )
+    password2 = forms.CharField(
+        label="Confirm Password",
+        widget=forms.PasswordInput(attrs={"class": "form-control item", "placeholder": "Confirm Password"}),
+        strip=False,
+    )
+
     class Meta:
         model = Worker
-        fields = UserCreationForm.Meta.fields + (
+        fields = (
+            "username",
             "first_name",
             "last_name",
             "position",
+            "password1",
+            "password2",
         )
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control item", "placeholder": "Username"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control item", "placeholder": "First Name"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control item", "placeholder": "Last Name"}),
+            "position": forms.Select(attrs={"class": "form-control item"}),
+        }
+
+class WorkerUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Worker
+        fields = ("username", "first_name", "last_name", "position")
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control item", "placeholder": "Username"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control item", "placeholder": "First Name"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control item", "placeholder": "Last Name"}),
+            "position": forms.Select(attrs={"class": "form-control item"}),
+        }
